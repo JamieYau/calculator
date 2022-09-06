@@ -51,6 +51,14 @@ button {
     font-size: 20px;
 }
 
-.all-clear, .clear {
+.functions {
     grid-column: span 2;
+}
+
+.all-clear {
+    background-color: #faa;
+}
+
+.clear {
+    background-color: #aaf;
 }
