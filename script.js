@@ -15,15 +15,17 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-function operator(operator, num1, num2) {
+function operate(operator, num1, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
   switch (operator) {
     case "+":
       return add(num1, num2);
     case "-":
       return subtract(num1, num2);
-    case "*":
+    case "×":
       return multiply(num1, num2);
-    case "/":
+    case "÷":
       return divide(num1, num2);
     default:
       return null;
@@ -39,6 +41,7 @@ operatorDisplay = document.querySelector(".operator-text");
 previousDisplay = document.querySelector(".previous-text");
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
+equals = document.querySelector(".equals");
 
 numButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -49,7 +52,7 @@ numButtons.forEach((btn) => {
 function handleNums(num) {
   currentNum += num;
   currentDisplay.textContent = currentNum;
-  if  (currentOperator !== "") {
+  if (currentOperator !== "") {
     operatorDisplay.textContent = currentOperator;
   }
 }
@@ -67,3 +70,13 @@ function handleOperators(value) {
   previousDisplay.textContent = previousNum;
   currentNum = "";
 }
+
+equals.addEventListener("click", (e) => {
+  currentDisplay.textContent = operate(
+    currentOperator,
+    previousNum,
+    currentNum
+  );
+  previousDisplay.textContent = "";
+  operatorDisplay.textContent = "";
+});
