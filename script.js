@@ -34,8 +34,8 @@ currentNum = "";
 currentOperator = "";
 previousNum = "";
 
-inputDisplay = document.querySelector(".input-text");
-outputDisplay = document.querySelector(".output-text");
+inputDisplay = document.querySelector(".current-text");
+outputDisplay = document.querySelector(".previous-text");
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
 
