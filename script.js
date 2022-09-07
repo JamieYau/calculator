@@ -40,9 +40,6 @@ currentDisplay = document.querySelector(".current-text");
 operatorDisplay = document.querySelector(".operator-text");
 previousDisplay = document.querySelector(".previous-text");
 
-ac = document.querySelector(".all-clear");
-del = document.querySelector(".delete");
-
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
 
@@ -76,6 +73,8 @@ function handleOperators(value) {
   currentNum = "";
 }
 
+//All Clear btn
+ac = document.querySelector(".all-clear");
 ac.addEventListener("click", clearCalc);
 
 function clearCalc() {
@@ -87,17 +86,20 @@ function clearCalc() {
   operatorDisplay.textContent = "";
 }
 
-del.addEventListener("click", (e) => {
-  currentNum = currentNum.slice(0, -1);
-  currentDisplay.textContent = currentNum;
-});
+//Delete btn
+del = document.querySelector(".delete");
+del.addEventListener("click", deletetxt);
 
+function deletetxt() {
+  console.log(currentNum);
+  currentNum = currentNum.toString().slice(0, -1);
+  currentDisplay.textContent = currentNum;
+}
+
+//Equals btn
 equals.addEventListener("click", (e) => {
-  currentDisplay.textContent = operate(
-    currentOperator,
-    previousNum,
-    currentNum
-  );
+  currentNum = operate(currentOperator, previousNum, currentNum);
+  currentDisplay.textContent = currentNum;
   previousDisplay.textContent = "";
   operatorDisplay.textContent = "";
 });
