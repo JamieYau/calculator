@@ -34,8 +34,8 @@ currentNum = "";
 currentOperator = "";
 previousNum = "";
 
-inputDisplay = document.querySelector(".current-text");
-outputDisplay = document.querySelector(".previous-text");
+currentDisplay = document.querySelector(".current-text");
+previousDisplay = document.querySelector(".previous-text");
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
 
@@ -47,19 +47,20 @@ numButtons.forEach((btn) => {
 
 function handleNums(num) {
   currentNum += num;
-  inputDisplay.textContent = currentNum;
+  currentDisplay.textContent = currentNum;
 }
 
 operators.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-      handleOperators(e.target.textContent);
+  btn.addEventListener("click", (e) => {
+    handleOperators(e.target.textContent);
+    console.log(e.target.textContent);
   });
 });
 
 function handleOperators(value) {
   currentOperator = value;
-  inputDisplay.textContent = currentOperator;
+  currentDisplay.textContent = currentOperator;
   previousNum = currentNum;
-  outputDisplay.textContent = previousNum;
+  previousDisplay.textContent = previousNum;
   currentNum = "";
 }
