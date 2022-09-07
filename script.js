@@ -32,8 +32,10 @@ function operator(operator, num1, num2) {
 
 currentNum = "";
 currentOperator = "";
+previousNum = "";
 
-inputDisplay = document.querySelector(".input-text")
+inputDisplay = document.querySelector(".input-text");
+outputDisplay = document.querySelector(".output-text");
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
 
@@ -57,4 +59,7 @@ operators.forEach((btn) => {
 function handleOperators(value) {
   currentOperator = value;
   inputDisplay.textContent = currentOperator;
+  previousNum = currentNum;
+  outputDisplay.textContent = previousNum;
+  currentNum = "";
 }
