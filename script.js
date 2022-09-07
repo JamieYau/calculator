@@ -30,6 +30,7 @@ function operator(operator, num1, num2) {
   }
 }
 
+currentNum = "";
 inputDisplay = document.querySelector(".input-text")
 
 numButtons = document.querySelectorAll(".digits");
@@ -40,5 +41,6 @@ numButtons.forEach((btn) => {
 });
 
 function displayNums(num) {
-  inputDisplay.textContent = num;
+  currentNum += num;
+  inputDisplay.textContent = currentNum;
 }
