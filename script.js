@@ -31,16 +31,28 @@ function operator(operator, num1, num2) {
 }
 
 currentNum = "";
-inputDisplay = document.querySelector(".input-text")
 
+inputDisplay = document.querySelector(".input-text")
+operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
+
 numButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    displayNums(e.target.textContent);
+    handleNums(e.target.textContent);
   });
 });
 
 function displayNums(num) {
   currentNum += num;
   inputDisplay.textContent = currentNum;
+}
+
+operators.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+      handleOperators(e.target.textContent);
+  });
+});
+
+function handleOperators(value) {
+  console.log(value);
 }
