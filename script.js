@@ -39,10 +39,14 @@ previousNum = "";
 currentDisplay = document.querySelector(".current-text");
 operatorDisplay = document.querySelector(".operator-text");
 previousDisplay = document.querySelector(".previous-text");
+
+ac = document.querySelector(".all-clear");
+del = document.querySelector(".delete");
+
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
+
 equals = document.querySelector(".equals");
-del = document.querySelector(".delete");
 
 numButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -72,6 +76,22 @@ function handleOperators(value) {
   currentNum = "";
 }
 
+ac.addEventListener("click", clearCalc);
+
+function clearCalc() {
+  currentNum = "";
+  currentOperator = "";
+  previousNum = "";
+  currentDisplay.textContent = "";
+  previousDisplay.textContent = "";
+  operatorDisplay.textContent = "";
+}
+
+del.addEventListener("click", (e) => {
+  currentNum = currentNum.slice(0, -1);
+  currentDisplay.textContent = currentNum;
+});
+
 equals.addEventListener("click", (e) => {
   currentDisplay.textContent = operate(
     currentOperator,
@@ -82,7 +102,3 @@ equals.addEventListener("click", (e) => {
   operatorDisplay.textContent = "";
 });
 
-del.addEventListener("click", (e) => {
-  currentNum = currentNum.slice(0, -1);
-  currentDisplay.textContent = currentNum;
-});
