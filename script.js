@@ -30,9 +30,15 @@ function operator(operator, num1, num2) {
   }
 }
 
+inputDisplay = document.querySelector(".input-text")
+
 numButtons = document.querySelectorAll(".digits");
 numButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    console.log(e.target.textContent);
+    displayNums(e.target.textContent);
   });
 });
+
+function displayNums(num) {
+  inputDisplay.textContent = num;
+}
