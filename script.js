@@ -42,6 +42,7 @@ previousDisplay = document.querySelector(".previous-text");
 operators = document.querySelectorAll(".operators");
 numButtons = document.querySelectorAll(".digits");
 equals = document.querySelector(".equals");
+del = document.querySelector(".delete");
 
 numButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -79,4 +80,9 @@ equals.addEventListener("click", (e) => {
   );
   previousDisplay.textContent = "";
   operatorDisplay.textContent = "";
+});
+
+del.addEventListener("click", (e) => {
+  currentNum = currentNum.slice(0, -1);
+  currentDisplay.textContent = currentNum;
 });
