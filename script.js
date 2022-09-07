@@ -16,8 +16,8 @@ function divide(num1, num2) {
 }
 
 function operate(operator, num1, num2) {
-  num1 = parseInt(num1);
-  num2 = parseInt(num2);
+  num1 = Number(num1);
+  num2 = Number(num2);
   switch (operator) {
     case "+":
       return add(num1, num2);
@@ -91,16 +91,20 @@ del = document.querySelector(".delete");
 del.addEventListener("click", deletetxt);
 
 function deletetxt() {
-  console.log(currentNum);
   currentNum = currentNum.toString().slice(0, -1);
   currentDisplay.textContent = currentNum;
 }
 
 //Equals btn
-equals.addEventListener("click", (e) => {
-  currentNum = operate(currentOperator, previousNum, currentNum);
-  currentDisplay.textContent = currentNum;
-  previousDisplay.textContent = "";
-  operatorDisplay.textContent = "";
-});
+equals.addEventListener("click", calulate);
 
+function calulate() {
+  if (currentOperator !== "") {
+    currentNum = operate(currentOperator, previousNum, currentNum);
+    currentDisplay.textContent = currentNum;
+    previousNum = "";
+    currentOperator = "";
+    previousDisplay.textContent = "";
+    operatorDisplay.textContent = "";
+  }
+}
