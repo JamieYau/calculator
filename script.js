@@ -31,6 +31,7 @@ function operator(operator, num1, num2) {
 }
 
 currentNum = "";
+currentOperator = "";
 
 inputDisplay = document.querySelector(".input-text")
 operators = document.querySelectorAll(".operators");
@@ -42,7 +43,7 @@ numButtons.forEach((btn) => {
   });
 });
 
-function displayNums(num) {
+function handleNums(num) {
   currentNum += num;
   inputDisplay.textContent = currentNum;
 }
@@ -54,5 +55,6 @@ operators.forEach((btn) => {
 });
 
 function handleOperators(value) {
-  console.log(value);
+  currentOperator = value;
+  inputDisplay.textContent = currentOperator;
 }
