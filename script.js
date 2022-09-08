@@ -98,8 +98,8 @@ function deletetxt() {
 decimal = document.querySelector('.decimal');
 decimal.addEventListener('click', addPoint);
 function addPoint() {
-  currentNum += ".";
-  currentDisplay.textContent = currentNum;
+  if (!currentNum.toString().includes(".")) currentNum += ".";
+    currentDisplay.textContent = currentNum;
 }
 
 ////////////////////////////////Equals btn////////////////////////////////
