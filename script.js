@@ -54,7 +54,11 @@ numButtons.forEach((btn) => {
 
 function handleNums(num) {
   if (currentNum.toString().length <= 12) {
-    currentNum += num;
+    if (currentNum.toString() === "0") {
+      currentNum = num;
+    } else {
+      currentNum += num;
+    }
     currentDisplay.textContent = currentNum;
     operatorDisplay.textContent = currentOperator;
   }
