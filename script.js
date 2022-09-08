@@ -54,9 +54,7 @@ numButtons.forEach((btn) => {
 function handleNums(num) {
   currentNum += num;
   currentDisplay.textContent = currentNum;
-  if (currentOperator !== "") {
-    operatorDisplay.textContent = currentOperator;
-  }
+  operatorDisplay.textContent = currentOperator;
 }
 
 operators.forEach((btn) => {
@@ -66,6 +64,8 @@ operators.forEach((btn) => {
 });
 
 function handleOperators(value) {
+  //If something has already been calulated then operators will calculate prior.
+  if (currentNum !== "" && previousNum !== "") calulate();
   currentOperator = value;
   currentDisplay.textContent = currentOperator;
   previousNum = currentNum;
