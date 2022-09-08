@@ -40,11 +40,8 @@ currentDisplay = document.querySelector(".current-text");
 operatorDisplay = document.querySelector(".operator-text");
 previousDisplay = document.querySelector(".previous-text");
 
-operators = document.querySelectorAll(".operators");
+////////////////////////////////Number btns////////////////////////////////
 numButtons = document.querySelectorAll(".digits");
-
-equals = document.querySelector(".equals");
-
 numButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     handleNums(e.target.textContent);
@@ -57,6 +54,8 @@ function handleNums(num) {
   operatorDisplay.textContent = currentOperator;
 }
 
+////////////////////////////////Operator btns////////////////////////////////
+operators = document.querySelectorAll(".operators");
 operators.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     handleOperators(e.target.textContent);
@@ -73,7 +72,7 @@ function handleOperators(value) {
   currentNum = "";
 }
 
-//All Clear btn
+////////////////////////////////All Clear btn////////////////////////////////
 ac = document.querySelector(".all-clear");
 ac.addEventListener("click", clearCalc);
 
@@ -86,7 +85,7 @@ function clearCalc() {
   operatorDisplay.textContent = "";
 }
 
-//Delete btn
+////////////////////////////////Delete btn////////////////////////////////
 del = document.querySelector(".delete");
 del.addEventListener("click", deletetxt);
 
@@ -95,7 +94,16 @@ function deletetxt() {
   currentDisplay.textContent = currentNum;
 }
 
-//Equals btn
+////////////////////////////////Decimal////////////////////////////////
+decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', addPoint);
+function addPoint() {
+  currentNum += ".";
+  currentDisplay.textContent = currentNum;
+}
+
+////////////////////////////////Equals btn////////////////////////////////
+equals = document.querySelector(".equals");
 equals.addEventListener("click", calulate);
 
 function calulate() {
