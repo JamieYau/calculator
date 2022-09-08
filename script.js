@@ -20,16 +20,20 @@ function operate(operator, num1, num2) {
   num2 = Number(num2);
   switch (operator) {
     case "+":
-      return add(num1, num2);
+      return round(add(num1, num2));
     case "-":
-      return subtract(num1, num2);
+      return round(subtract(num1, num2));
     case "×":
-      return multiply(num1, num2);
+      return round(multiply(num1, num2));
     case "÷":
-      return divide(num1, num2);
+      return round(divide(num1, num2));
     default:
       return null;
   }
+}
+
+function round(number) {
+  return Math.round(number * 1000) / 1000;
 }
 
 currentNum = "";
@@ -95,11 +99,11 @@ function deletetxt() {
 }
 
 ////////////////////////////////Decimal////////////////////////////////
-decimal = document.querySelector('.decimal');
-decimal.addEventListener('click', addPoint);
+decimal = document.querySelector(".decimal");
+decimal.addEventListener("click", addPoint);
 function addPoint() {
   if (!currentNum.toString().includes(".")) currentNum += ".";
-    currentDisplay.textContent = currentNum;
+  currentDisplay.textContent = currentNum;
 }
 
 ////////////////////////////////Equals btn////////////////////////////////
