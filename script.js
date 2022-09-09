@@ -135,5 +135,7 @@ function btnPress(e) {
   console.log(key);
   if (isFinite(key)) handleNums(e.key);
 
+  else if (key === "Backspace") deletetxt();
+
   else if (key === "=") calculate();
 }
