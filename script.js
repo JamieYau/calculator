@@ -46,11 +46,9 @@ previousDisplay = document.querySelector(".previous-text");
 
 ////////////////////////////////Number btns////////////////////////////////
 numButtons = document.querySelectorAll(".digits");
-numButtons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    handleNums(e.target.textContent);
-  });
-});
+numButtons.forEach((btn) =>
+  btn.addEventListener("click", (e) => handleNums(e.target.textContent))
+);
 
 function handleNums(num) {
   if (currentNum.toString().length <= 12) {
@@ -66,16 +64,14 @@ function handleNums(num) {
 
 ////////////////////////////////Operator btns////////////////////////////////
 operators = document.querySelectorAll(".operators");
-operators.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    handleOperators(e.target.value);
-  });
-});
+operators.forEach((btn) =>
+  btn.addEventListener("click", (e) => handleOperators(e.target.value))
+);
 
-function handleOperators(value) {
+function handleOperators(operator) {
   //If something has already been calculated then operators will calculate prior.
   if (currentNum !== "" && previousNum !== "") calculate();
-  currentOperator = value;
+  currentOperator = operator;
   currentDisplay.textContent = currentOperator;
   previousNum = currentNum;
   previousDisplay.textContent = previousNum;
@@ -131,15 +127,9 @@ function calculate() {
 window.addEventListener("keydown", btnPress);
 
 function btnPress(e) {
-  const key = e.key;
-  console.log(key);
-  if (isFinite(key)) handleNums(key);
-
-  else if (key === "Backspace") deletetxt();
-
-  else if (["+","-","*","/"].includes(key)) handleOperators(key);
-
-  else if (key === ".") addPoint();
-
-  else if (["=", "Enter"].includes(key)) calculate();
+  if (isFinite(e.key)) handleNums(e.key);
+  else if (e.key === "Backspace") deletetxt();
+  else if (["+", "-", "*", "/"].includes(e.key)) handleOperators(e.key);
+  else if (e.key === ".") addPoint();
+  else if (["=", "Enter"].includes(e.key)) calculate();
 }
