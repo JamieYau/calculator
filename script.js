@@ -126,3 +126,10 @@ function calulate() {
     operatorDisplay.textContent = "";
   }
 }
+
+////////////////////////////////KeyboardEventHandler////////////////////////////////
+window.addEventListener("keydown", btnPress);
+
+function btnPress(e) {
+  console.log(e.key);
+}
