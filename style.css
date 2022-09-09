@@ -30,17 +30,23 @@ button {
 }
 
 .display {
+  font-family: 'Digital-7';
   display: flex;
   flex-direction: column;
   background-color: white;
   text-align: right;
-  padding: 20px 10px;
-  font-size: 20px;
+  padding: 10px 10px;
+  font-size: 50px;
   gap: 5px;
+  min-height: 120px;
 }
 
 .display > div {
-  min-height: 25px;
+  min-height: 30px;
+}
+
+.previous-text, .operator-text {
+    font-size: 25px;
 }
 
 .buttons-container {
