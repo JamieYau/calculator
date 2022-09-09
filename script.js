@@ -139,5 +139,7 @@ function btnPress(e) {
 
   else if (["+","-","*","/"].includes(key)) handleOperators(key);
 
+  else if (key === ".") addPoint();
+
   else if (["=", "Enter"].includes(key)) calculate();
 }
