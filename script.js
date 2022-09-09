@@ -73,8 +73,8 @@ operators.forEach((btn) => {
 });
 
 function handleOperators(value) {
-  //If something has already been calulated then operators will calculate prior.
-  if (currentNum !== "" && previousNum !== "") calulate();
+  //If something has already been calculated then operators will calculate prior.
+  if (currentNum !== "" && previousNum !== "") calculate();
   currentOperator = value;
   currentDisplay.textContent = currentOperator;
   previousNum = currentNum;
@@ -114,9 +114,9 @@ function addPoint() {
 
 ////////////////////////////////Equals btn////////////////////////////////
 equals = document.querySelector(".equals");
-equals.addEventListener("click", calulate);
+equals.addEventListener("click", calculate);
 
-function calulate() {
+function calculate() {
   if (currentOperator !== "") {
     currentNum = operate(currentOperator, previousNum, currentNum);
     currentDisplay.textContent = currentNum;
@@ -134,4 +134,6 @@ function btnPress(e) {
   const key = e.key;
   console.log(key);
   if (isFinite(key)) handleNums(e.key);
+
+  else if (key === "=") calculate();
 }
