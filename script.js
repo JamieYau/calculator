@@ -23,9 +23,9 @@ function operate(operator, num1, num2) {
       return round(add(num1, num2));
     case "-":
       return round(subtract(num1, num2));
-    case "×":
+    case "*":
       return round(multiply(num1, num2));
-    case "÷":
+    case "/":
       return round(divide(num1, num2));
     default:
       return null;
@@ -46,11 +46,9 @@ previousDisplay = document.querySelector(".previous-text");
 
 ////////////////////////////////Number btns////////////////////////////////
 numButtons = document.querySelectorAll(".digits");
-numButtons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    handleNums(e.target.textContent);
-  });
-});
+numButtons.forEach((btn) =>
+  btn.addEventListener("click", (e) => handleNums(e.target.textContent))
+);
 
 function handleNums(num) {
   if (currentNum.toString().length <= 12) {
@@ -66,16 +64,14 @@ function handleNums(num) {
 
 ////////////////////////////////Operator btns////////////////////////////////
 operators = document.querySelectorAll(".operators");
-operators.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    handleOperators(e.target.textContent);
-  });
-});
+operators.forEach((btn) =>
+  btn.addEventListener("click", (e) => handleOperators(e.target.value))
+);
 
-function handleOperators(value) {
-  //If something has already been calulated then operators will calculate prior.
-  if (currentNum !== "" && previousNum !== "") calulate();
-  currentOperator = value;
+function handleOperators(operator) {
+  //If something has already been calculated then operators will calculate prior.
+  if (currentNum !== "" && previousNum !== "") calculate();
+  currentOperator = operator;
   currentDisplay.textContent = currentOperator;
   previousNum = currentNum;
   previousDisplay.textContent = previousNum;
@@ -114,9 +110,9 @@ function addPoint() {
 
 ////////////////////////////////Equals btn////////////////////////////////
 equals = document.querySelector(".equals");
-equals.addEventListener("click", calulate);
+equals.addEventListener("click", calculate);
 
-function calulate() {
+function calculate() {
   if (currentOperator !== "") {
     currentNum = operate(currentOperator, previousNum, currentNum);
     currentDisplay.textContent = currentNum;
@@ -125,4 +121,15 @@ function calulate() {
     previousDisplay.textContent = "";
     operatorDisplay.textContent = "";
   }
+}
+
+////////////////////////////////KeyboardEventHandler////////////////////////////////
+window.addEventListener("keydown", btnPress);
+
+function btnPress(e) {
+  if (isFinite(e.key)) handleNums(e.key);
+  else if (e.key === "Backspace") deletetxt();
+  else if (["+", "-", "*", "/"].includes(e.key)) handleOperators(e.key);
+  else if (e.key === ".") addPoint();
+  else if (["=", "Enter"].includes(e.key)) calculate();
 }
