@@ -139,5 +139,5 @@ function btnPress(e) {
 
   else if (["+","-","*","/"].includes(key)) handleOperators(key);
 
-  else if (key === "=") calculate();
+  else if (["=", "Enter"].includes(key)) calculate();
 }
