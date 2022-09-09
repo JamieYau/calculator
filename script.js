@@ -131,5 +131,7 @@ function calulate() {
 window.addEventListener("keydown", btnPress);
 
 function btnPress(e) {
-  console.log(e.key);
+  const key = e.key;
+  console.log(key);
+  if (isFinite(key)) handleNums(e.key);
 }
