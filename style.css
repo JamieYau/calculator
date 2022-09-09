@@ -24,7 +24,7 @@ button {
   display: flex;
   flex-direction: column;
   background-color: darkseagreen;
-  width: 400px;
+  width: 380px;
   box-sizing: border-box;
   padding: 20px;
 }
@@ -57,8 +57,8 @@ button {
 }
 
 button {
-  padding: 20px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 30px;
 }
 
 button:hover {
@@ -68,6 +68,8 @@ button:hover {
 
 .functions {
   grid-column: span 2;
+  display: flex;
+  justify-content: center;
 }
 
 .all-clear {
