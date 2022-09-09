@@ -23,9 +23,9 @@ function operate(operator, num1, num2) {
       return round(add(num1, num2));
     case "-":
       return round(subtract(num1, num2));
-    case "×":
+    case "*":
       return round(multiply(num1, num2));
-    case "÷":
+    case "/":
       return round(divide(num1, num2));
     default:
       return null;
@@ -68,7 +68,7 @@ function handleNums(num) {
 operators = document.querySelectorAll(".operators");
 operators.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    handleOperators(e.target.textContent);
+    handleOperators(e.target.value);
   });
 });
 
@@ -133,9 +133,11 @@ window.addEventListener("keydown", btnPress);
 function btnPress(e) {
   const key = e.key;
   console.log(key);
-  if (isFinite(key)) handleNums(e.key);
+  if (isFinite(key)) handleNums(key);
 
   else if (key === "Backspace") deletetxt();
+
+  else if (["+","-","*","/"].includes(key)) handleOperators(key);
 
   else if (key === "=") calculate();
 }
